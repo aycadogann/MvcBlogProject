@@ -1,6 +1,7 @@
 ﻿using MvcBlogProject.DataAccessLayer.Abstract;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -10,29 +11,39 @@ namespace MvcBlogProject.DataAccessLayer.Concrete.Repositories
 {
     public class GenericRepository<T> : IRepository<T> where T : class
     {
+        Context context = new Context();
+        DbSet<T> _object;
+
+        public GenericRepository()
+        {
+            _object = context.Set<T>();
+        }
+
         public void Delete(T entity)
         {
-            throw new NotImplementedException();
+            _object.Remove(entity);
+            context.SaveChanges();
         }
 
         public List<T> GetAll()
         {
-            throw new NotImplementedException();
+            return _object.ToList();
         }
 
         public List<T> GetById(Expression<Func<T, bool>> filter)
         {
-            throw new NotImplementedException();
+            return _object.Where(filter).ToList();
         }
 
         public void Insert(T entity)
         {
-            throw new NotImplementedException();
+            _object.Add(entity);
+            context.SaveChanges();
         }
 
         public void Update(T entity)
         {
-            throw new NotImplementedException();
+            context.SaveChanges();
         }
     }
 }
