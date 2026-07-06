@@ -58,6 +58,12 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MvcBlogProject.EntityLayer\MvcBlogProject.EntityLayer.csproj">
+      <Project>{4CC79855-A183-489F-816F-4826FE6D9F3C}</Project>
+      <Name>MvcBlogProject.EntityLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
