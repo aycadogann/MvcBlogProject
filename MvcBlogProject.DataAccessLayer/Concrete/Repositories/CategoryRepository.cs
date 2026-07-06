@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,6 +23,11 @@ namespace MvcBlogProject.DataAccessLayer.Concrete.Repositories
         public List<Category> GetAll()
         {
             return _object.ToList();
+        }
+
+        public List<Category> GetById(Expression<Func<Category, bool>> filter)
+        {
+            return _object.Where(filter).ToList();
         }
 
         public void Insert(Category category)
