@@ -1,4 +1,5 @@
 ﻿using MvcBlogProject.BusinessLayer.Concrete;
+using MvcBlogProject.DataAccessLayer.EntityFramework;
 using MvcBlogProject.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace MvcBlogProject.UI.Controllers
     public class CategoryController : Controller
     {
         // GET: Category
-        CategoryManager categoryManager = new CategoryManager();
+        CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
 
         public ActionResult Index()
         {
@@ -19,8 +20,8 @@ namespace MvcBlogProject.UI.Controllers
         }
         public ActionResult GetCategoryList()
         {
-            //var categoryValues = categoryManager.GetAllBL();
-            //return View(categoryValues);
+            var categoryValues = categoryManager.GetAllBL();
+            return View(categoryValues);
         }
 
         [HttpGet]
