@@ -1,0 +1,29 @@
+﻿@using MvcBlogProject.EntityLayer.Concrete
+@model List<Category>
+@{
+    Layout = null;
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<table class="table table-bordered" style="margin-left:25px; margin-top:25px; margin-right:50px">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Kategori Adı</th>
+            <th>Durum</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.CategoryID</td>
+                <td>@item.CategoryName</td>
+                <td>@item.CategoryStatus</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+<a href="/Category/AddCategory" class="btn btn-info">Yeni Kategori</a>
