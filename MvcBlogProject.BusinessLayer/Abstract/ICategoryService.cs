@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MvcBlogProject.EntityLayer.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,6 @@ namespace MvcBlogProject.BusinessLayer.Abstract
 {
     public interface ICategoryService
     {
+        List<Category> GetAllBL();
     }
 }

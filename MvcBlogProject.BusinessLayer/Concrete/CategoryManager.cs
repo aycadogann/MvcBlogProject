@@ -1,4 +1,6 @@
-﻿using MvcBlogProject.DataAccessLayer.Concrete.Repositories;
+﻿using MvcBlogProject.BusinessLayer.Abstract;
+using MvcBlogProject.DataAccessLayer.Abstract;
+using MvcBlogProject.DataAccessLayer.Concrete.Repositories;
 using MvcBlogProject.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -8,24 +10,19 @@ using System.Threading.Tasks;
 
 namespace MvcBlogProject.BusinessLayer.Concrete
 {
-    public class CategoryManager
+    public class CategoryManager : ICategoryService
     {
-        GenericRepository<Category> repository = new GenericRepository<Category>();
+        ICategoryDal _categoryDal;
+
+        public CategoryManager(ICategoryDal categoryDal)
+        {
+            _categoryDal = categoryDal;
+        }
+
         public List<Category> GetAllBL()
         {
-            return repository.GetAll();
+            return _categoryDal.GetAll();
         }
-        public void AddBL(Category category)
-        {
-            if (category.CategoryName=="" || category.CategoryName.Length<=3 || 
-                category.CategoryDescription=="" || category.CategoryName.Length>=51)
-            {
-                //Hata mesajı
-            }
-            else
-            {
-                repository.Insert(category);
-            }
-        }
+
     }
 }

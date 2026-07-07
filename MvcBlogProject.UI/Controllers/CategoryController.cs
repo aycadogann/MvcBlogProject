@@ -19,8 +19,8 @@ namespace MvcBlogProject.UI.Controllers
         }
         public ActionResult GetCategoryList()
         {
-            var categoryValues = categoryManager.GetAllBL();
-            return View(categoryValues);
+            //var categoryValues = categoryManager.GetAllBL();
+            //return View(categoryValues);
         }
 
         [HttpGet]
@@ -32,7 +32,7 @@ namespace MvcBlogProject.UI.Controllers
         [HttpPost]
         public ActionResult AddCategory(Category category)
         {
-            categoryManager.AddBL(category);
+            //categoryManager.AddBL(category);
             return RedirectToAction("GetCategoryList");
         }
     }
