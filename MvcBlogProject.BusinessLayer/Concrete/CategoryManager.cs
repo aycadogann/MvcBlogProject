@@ -19,6 +19,11 @@ namespace MvcBlogProject.BusinessLayer.Concrete
             _categoryDal = categoryDal;
         }
 
+        public void CategoryAddBL(Category category)
+        {
+            _categoryDal.Insert(category);
+        }
+
         public List<Category> GetAllBL()
         {
             return _categoryDal.GetAll();

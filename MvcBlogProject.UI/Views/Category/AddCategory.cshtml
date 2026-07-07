@@ -1,14 +1,21 @@
-﻿
+﻿@model MvcBlogProject.EntityLayer.Concrete.Category
 @{
     Layout = null;
 }
 
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 
-<form class="form-group" method="post">
-    <input type="text" placeholder="Kategori Adı" name="CategoryName" class="form-control" />
-    <br />
-    <input type="text" placeholder="Açıklama" name="Description" class="form-control" />
-    <br />
-    <button class="btn btn-info">Ekle</button>
-</form>
+@using (Html.BeginForm("AddCategory", "Category", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.Label("Kategori Adı")
+        @Html.TextBoxFor(x => x.CategoryName, new {@class="form-control"})
+        @Html.ValidationMessageFor(x=>x.CategoryName, "" ,new { @class = "form-control", @style = "color:red" })
+        <br /> <br />
+        @Html.Label("Açıklamayı Yazınız")
+        @Html.TextBoxFor(x=>x.CategoryDescription, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x=>x.CategoryDescription)
+        <br />  <br />
+        <button>Kaydet</button>
+    </div>
+}
