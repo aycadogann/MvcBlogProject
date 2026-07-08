@@ -1,0 +1,46 @@
+﻿using MvcBlogProject.BusinessLayer.Abstract;
+using MvcBlogProject.DataAccessLayer.Abstract;
+using MvcBlogProject.EntityLayer.Concrete;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MvcBlogProject.BusinessLayer.Concrete
+{
+    public class WriterManager : IWriterService
+    {
+        IWriterDal _writerDal;
+
+        public WriterManager(IWriterDal writerDal)
+        {
+            _writerDal = writerDal;
+        }
+
+        public List<Writer> GetAllBL()
+        {
+            return _writerDal.GetAll();
+        }
+
+        public Writer GetByIdBL(int id)
+        {
+            return _writerDal.Get(x => x.WriterID == id);
+        }
+
+        public void WriterAddBL(Writer writer)
+        {
+            _writerDal.Insert(writer);
+        }
+
+        public void WriterDeleteBL(Writer writer)
+        {
+            _writerDal.Delete(writer);
+        }
+
+        public void WriterUpdateBL(Writer writer)
+        {
+            _writerDal.Update(writer);
+        }
+    }
+}
