@@ -25,12 +25,17 @@ namespace MvcBlogProject.DataAccessLayer.Concrete.Repositories
             context.SaveChanges();
         }
 
+        public T Get(Expression<Func<T, bool>> filter)
+        {
+            return _object.SingleOrDefault(filter);
+        }
+
         public List<T> GetAll()
         {
             return _object.ToList();
         }
 
-        public List<T> GetById(Expression<Func<T, bool>> filter)
+        public List<T> GetAll(Expression<Func<T, bool>> filter)
         {
             return _object.Where(filter).ToList();
         }

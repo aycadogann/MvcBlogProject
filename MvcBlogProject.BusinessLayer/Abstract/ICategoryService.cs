@@ -10,6 +10,9 @@ namespace MvcBlogProject.BusinessLayer.Abstract
     public interface ICategoryService
     {
         List<Category> GetAllBL();
+        Category GetByIdBL(int id);
         void CategoryAddBL(Category category);
+        void CategoryDeleteBL(Category category);
+        void CategoryUpdateBL(Category category);
     }
 }

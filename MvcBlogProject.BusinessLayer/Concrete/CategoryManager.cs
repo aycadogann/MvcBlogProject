@@ -24,10 +24,24 @@ namespace MvcBlogProject.BusinessLayer.Concrete
             _categoryDal.Insert(category);
         }
 
+        public void CategoryDeleteBL(Category category)
+        {
+            _categoryDal.Delete(category);
+        }
+
+        public void CategoryUpdateBL(Category category)
+        {
+            _categoryDal.Update(category);
+        }
+
         public List<Category> GetAllBL()
         {
             return _categoryDal.GetAll();
         }
 
+        public Category GetByIdBL(int id)
+        {
+            return _categoryDal.Get(x=>x.CategoryID==id);
+        }
     }
 }
