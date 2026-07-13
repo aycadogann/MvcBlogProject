@@ -34,7 +34,6 @@ to get the desired effect
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
         <!-- Navbar -->
-
         <!-- /.navbar -->
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -69,7 +68,7 @@ to get the desired effect
                                     Kategoriler
                                 </p>
                             </a>
-                            
+
                         </li>
                         <li class="nav-item">
                             <a href="/Heading/Index/" class="nav-link">
@@ -83,7 +82,7 @@ to get the desired effect
                             <a href="/Writer/Index" class="nav-link">
                                 <i class="nav-icon fas fa-copy"></i>
                                 <p>
-                                    Yazarlar                               
+                                    Yazarlar
                                 </p>
                             </a>
                         </li>
@@ -120,13 +119,13 @@ to get the desired effect
                             <a href="/About/Index/" class="nav-link">
                                 <i class="nav-icon fas fa-tree"></i>
                                 <p>
-                                   Hakkımızda
-                                    
+                                    Hakkımızda
+
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
+                            <a href="/Contact/Index/" class="nav-link">
                                 <i class="nav-icon fas fa-edit"></i>
                                 <p>
                                     İletişim & Mesajlar
@@ -164,7 +163,7 @@ to get the desired effect
                                     Hata Sayfaları
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
-                            </a> 
+                            </a>
                         </li>
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
@@ -173,7 +172,7 @@ to get the desired effect
                                     Siteye Git
                                 </p>
                             </a>
-                            
+
                         </li>
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
@@ -182,7 +181,7 @@ to get the desired effect
                                     Çıkış Yap
                                 </p>
                             </a>
-                            
+
                         </li>
                     </ul>
                 </nav>
@@ -202,7 +201,7 @@ to get the desired effect
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-        
+
     </div>
     <!-- ./wrapper -->
     <!-- REQUIRED SCRIPTS -->
@@ -217,6 +216,14 @@ to get the desired effect
     <script src="~/AdminLTE-3.0.4/plugins/chart.js/Chart.min.js"></script>
     <script src="~/AdminLTE-3.0.4/dist/js/demo.js"></script>
     <script src="~/AdminLTE-3.0.4/dist/js/pages/dashboard3.js"></script>
+    <script src="~/AdminLTE-3.0.4/plugins/summernote/summernote-bs4.min.js"></script>
+    <!-- Page Script -->
+    <script>
+        $(function () {
+            //Add text editor
+            $('#compose-textarea').summernote().noConflict;
+        })
+    </script>
 </body>
 </html>
 
