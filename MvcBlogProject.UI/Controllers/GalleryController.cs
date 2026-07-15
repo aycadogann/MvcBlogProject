@@ -11,7 +11,7 @@ namespace MvcBlogProject.UI.Controllers
     public class GalleryController : Controller
     {
         // GET: Gallery
-        ImageFileManager imageFileManager = new ImageFileManager(new EfImageFileDal();
+        ImageFileManager imageFileManager = new ImageFileManager(new EfImageFileDal());
 
         public ActionResult Index()
         {
