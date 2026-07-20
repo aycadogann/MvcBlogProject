@@ -34,7 +34,7 @@ namespace MvcBlogProject.UI.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return View();
+            //return View();
         }
 
         [HttpGet]
@@ -58,7 +58,7 @@ namespace MvcBlogProject.UI.Controllers
             {
                 return RedirectToAction("WriterLogin");
             }
-        
+        }
 
     }
 }

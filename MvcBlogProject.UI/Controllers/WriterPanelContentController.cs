@@ -1,4 +1,5 @@
 ﻿using MvcBlogProject.BusinessLayer.Concrete;
+using MvcBlogProject.DataAccessLayer.Concrete;
 using MvcBlogProject.DataAccessLayer.EntityFramework;
 using System;
 using System.Collections.Generic;
@@ -12,10 +13,12 @@ namespace MvcBlogProject.UI.Controllers
     {
         // GET: WriterPanelContent
         ContentManager contentManager = new ContentManager(new EfContentDal());
-        public ActionResult MyContent()
+        public ActionResult MyContent(string value)
         {
-            int id = 1;
-            var contentValues = contentManager.GetByWriterBL(id);
+            Context context = new Context();
+            value = (string)Session["WriterMail"];
+            var writerIdInfo = context.Writers.Where(x => x.WriterMail == value).Select(y => y.WriterID).FirstOrDefault();
+            var contentValues = contentManager.GetByWriterBL(writerIdInfo);
             return View(contentValues); 
         }
     }
