@@ -47,5 +47,10 @@ namespace MvcBlogProject.BusinessLayer.Concrete
         {
             return _contentDal.GetAll(x => x.HeadingID == id);
         }
+
+        public List<Content> GetByWriterBL(int id)
+        {
+            return _contentDal.GetAll(x => x.WriterID == id);
+        }
     }
 }

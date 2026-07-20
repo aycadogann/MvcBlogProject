@@ -10,6 +10,7 @@ namespace MvcBlogProject.BusinessLayer.Abstract
     public interface IHeadingService
     {
         List<Heading> GetAllBL();
+        List<Heading> GetAllByWriterBL(int id);
         Heading GetByIdBL(int id);
         void HeadingAddBL(Heading heading);
         void HeadingDeleteBL(Heading heading);

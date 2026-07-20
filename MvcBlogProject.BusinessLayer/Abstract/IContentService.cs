@@ -11,6 +11,7 @@ namespace MvcBlogProject.BusinessLayer.Abstract
     {
         List<Content> GetAllBL();
         List<Content> GetByHeadingIdBL(int id);
+        List<Content> GetByWriterBL(int id);
         Content GetByIdBL(int id);
         void ContentAddBL(Content content);
         void ContentDeleteBL(Content content);

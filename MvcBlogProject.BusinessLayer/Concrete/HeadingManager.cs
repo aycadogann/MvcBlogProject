@@ -23,6 +23,11 @@ namespace MvcBlogProject.BusinessLayer.Concrete
             return _headingDal.GetAll();
         }
 
+        public List<Heading> GetAllByWriterBL(int id)
+        {
+            return _headingDal.GetAll(x => x.WriterID == id);
+        }
+
         public Heading GetByIdBL(int id)
         {
             return _headingDal.Get(x=>x.HeadingID==id);
