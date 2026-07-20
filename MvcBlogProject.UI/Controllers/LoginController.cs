@@ -9,6 +9,7 @@ using System.Web.Security;
 
 namespace MvcBlogProject.UI.Controllers
 {
+    [AllowAnonymous]
     public class LoginController : Controller
     {
         // GET: Login

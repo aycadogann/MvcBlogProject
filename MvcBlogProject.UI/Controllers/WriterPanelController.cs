@@ -1,4 +1,5 @@
 ﻿using MvcBlogProject.BusinessLayer.Concrete;
+using MvcBlogProject.DataAccessLayer.Concrete;
 using MvcBlogProject.DataAccessLayer.EntityFramework;
 using MvcBlogProject.EntityLayer.Concrete;
 using System;
@@ -14,14 +15,18 @@ namespace MvcBlogProject.UI.Controllers
         // GET: WriterPanel
         HeadingManager headingManager = new HeadingManager(new EfHeadingDal());
         CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
+        Context context = new Context();
+
         public ActionResult WriterProfile()
         {
             return View();
         }
 
-        public ActionResult MyHeading(int id)
+        public ActionResult MyHeading(string value)
         {
-            var values = headingManager.GetAllByWriterBL(id);
+            value = (string)Session["WriterMail"];
+            var writerIdInfo = context.Writers.Where(x => x.WriterMail == value).Select(y => y.WriterID).FirstOrDefault();
+            var values = headingManager.GetAllByWriterBL(writerIdInfo);
             return View(values);
         }
 
@@ -41,10 +46,13 @@ namespace MvcBlogProject.UI.Controllers
         [HttpPost]
         public ActionResult NewHeading(Heading heading)
         {
+            string writerMail = (string)Session["WriterMail"];
+            var writerIdInfo = context.Writers.Where(x => x.WriterMail == writerMail).Select(y => y.WriterID).FirstOrDefault();
             heading.HeadingDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+            heading.WriterID = writerIdInfo;
             heading.HeadingStatus = true;
             headingManager.HeadingAddBL(heading);
-            return RedirectToAction("Index");
+            return RedirectToAction("MyHeading");
         }
 
         [HttpGet]
@@ -92,7 +100,7 @@ namespace MvcBlogProject.UI.Controllers
 //< system.web >
 
 //      < customErrors mode = "On" >
- 
+
 //           < error statusCode = "404" redirect = "/ErrorPage/Page404/" />
-    
+
 //          </ customErrors >
