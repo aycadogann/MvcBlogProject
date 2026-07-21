@@ -61,5 +61,12 @@ namespace MvcBlogProject.UI.Controllers
             }
         }
 
+        public ActionResult LogOut()
+        {
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+            return RedirectToAction("Headings", "Default");
+        }
+
     }
 }

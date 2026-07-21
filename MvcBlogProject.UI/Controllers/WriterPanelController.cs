@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
+using PagedList.Mvc;
 
 namespace MvcBlogProject.UI.Controllers
 {
@@ -92,6 +94,12 @@ namespace MvcBlogProject.UI.Controllers
             }
 
             return RedirectToAction("MyHeading");
+        }
+
+        public ActionResult AllHeadings(int page=1)
+        {
+            var headings = headingManager.GetAllBL().ToPagedList(page,5);
+            return View(headings);
         }
 
     }
